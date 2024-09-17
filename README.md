@@ -1,0 +1,2 @@
+# mycms
+django prac
