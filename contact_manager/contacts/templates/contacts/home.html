@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+  <h2>Contact List</h2>
+  <form method="GET" action=".">
+    <input
+      type="text"
+      name="q"
+      class="form-control"
+      placeholder="Search by name or email"
+      value="{{ request.GET.q }}"
+    />
+    <button class="btn btn-primary mt-3">Search</button>
+  </form>
+  <ul class="list-group mt-4">
+    {% for contact in contacts %}
+    <li class="list-group-item">
+      <a href="{% url 'contact_detail' contact.pk %}"
+        >{{ contact.first_name }}</a
+      >
+      - {{ contact.email }} - {{ contact.phone_number }}
+    </li>
+    {% empty %}
+    <li class="list-group-item">No contacts found</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'add_contact' %}" class="btn btn-success mt-3"
+    >Add New Contact</a
+  >
+</div>
+{% endblock %}

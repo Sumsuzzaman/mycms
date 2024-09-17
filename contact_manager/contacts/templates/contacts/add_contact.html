@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+  <h2>{{ form.instance.pk|yesno:"Edit Contact,Add New Contact" }}</h2>
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

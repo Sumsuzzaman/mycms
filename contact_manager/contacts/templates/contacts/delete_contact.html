@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+  <h2>Are you sure you want to delete {{ contact.first_name }} ?</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Yes, delete</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}
